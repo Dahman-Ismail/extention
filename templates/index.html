@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Phishing Detector</title>
+    <style>
+        body { font-family: Arial; text-align: center; padding: 40px; }
+        input[type="text"] { width: 60%; padding: 10px; }
+        button { padding: 10px 20px; background-color: orange; border: none; color: white; font-size: 16px; }
+        .result { margin-top: 20px; font-size: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Phishing URL Detection</h1>
+    <form method="post">
+        <input type="text" name="url" placeholder="Enter a URL" required>
+        <br><br>
+        <button type="submit">Check URL</button>
+    </form>
+
+    {% if result %}
+        <div class="result">
+            <p><strong>URL:</strong> {{ url }}</p>
+            <p><strong>Prediction:</strong> {{ result }}</p>
+            <p><strong>Votes:</strong> GBC = {{ votes[0] }}, Tree = {{ votes[1] }}, Forest = {{ votes[2] }}</p>
+        </div>
+    {% elif error %}
+        <div class="result" style="color: red;">
+            <p>Error: {{ error }}</p>
+        </div>
+    {% endif %}
+</body>
+</html>
